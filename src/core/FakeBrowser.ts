@@ -33,7 +33,7 @@ export const kDefaultLaunchArgs = [
     '--mute-audio',
     '--no-first-run',
     '--no-default-browser-check',
-    '--disable-software-rasterizer',
+    //'--disable-software-rasterizer',
     '--disable-cloud-import',
     '--disable-gesture-typing',
     '--disable-setuid-sandbox',
