@@ -19,7 +19,8 @@ export const kDefaultWindowsDD = require(path.resolve(__dirname, '../../device-h
 
 const kBrowserMaxSurvivalTime = 60 * 1000 * 15
 const kDefaultReferers = ['https://www.google.com', 'https://www.bing.com']
-const kInternalHttpServerPort = process?.env?.debugPort || 17311
+const definedRemotePort = process?.env?.debugPort ? parseInt(process?.env?.debugPort) : 0;
+const kInternalHttpServerPort = definedRemotePort || 17311
 
 // chromium startup parameters
 // https://peter.sh/experiments/chromium-command-line-switches/
@@ -268,7 +269,7 @@ export class FakeBrowser {
 
         // cdp
         try {
-            await page._client().send('ServiceWorker.setForceUpdateOnPageLoad', {forceUpdateOnPageLoad: true})
+            await page.client().send('ServiceWorker.setForceUpdateOnPageLoad', {forceUpdateOnPageLoad: true})
         } catch (ex: any) {
             console.warn('CDP ServiceWorker.setForceUpdateOnPageLoad exception', ex)
         }
@@ -276,7 +277,7 @@ export class FakeBrowser {
         // touch
         if (this.isMobileBrowser) {
             try {
-                await page._client().send('Emulation.setEmitTouchEventsForMouse', {
+                await page.client().send('Emulation.setEmitTouchEventsForMouse', {
                     enabled: true,
                 })
             } catch (ex: any) {
@@ -284,7 +285,7 @@ export class FakeBrowser {
             }
 
             Object.defineProperty(page, '_patchTouchscreen', {
-                value: new Touchscreen(page._client(), page.keyboard),
+                value: new Touchscreen(page.client(), page.keyboard),
             })
         }
 
