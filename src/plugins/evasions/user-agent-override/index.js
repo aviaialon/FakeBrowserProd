@@ -165,7 +165,7 @@ class Plugin extends PuppeteerExtraPlugin {
     async onPageCreated(page) {
         const override = this.opts.override;
         await withUtils(this, page).evaluateOnNewDocument(this.mainFunction, override);
-        const __client = page._client || page._client();
+        const __client = page._client() || page._client;
 
         try {
             await __client.send('Network.setUserAgentOverride', override);
