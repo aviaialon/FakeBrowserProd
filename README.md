@@ -1,19 +1,7 @@
-# 🐭 Fake browser, headless browser, all for bots 🤖
-
 * **Basic version:**
 Based on [puppeteer](https://github.com/puppeteer/puppeteer), uses JavaScript hooks to modify properties and provides a simple api to make your web bot undetectable.
 * **Advanced version:**
 [fakechrome](https://github.com/kkoooqq/fakechrome) recompiled Chromium to complete the simulation more thoroughly. 
-
-------
-
-😎 Join Discord [**ALL-FOR-BOTS**](https://discord.gg/kjjwbayqxG) and let's discover fun things together!
-
-------
-
-Reverse engineering is not easy, and I would appreciate if you could give a ⭐!
-
-------
 
 ## Technical details
 
