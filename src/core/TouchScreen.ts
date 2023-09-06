@@ -29,7 +29,7 @@ export class Touchscreen {
                 button: this._button,
                 x: fromX + (this._x - fromX) * (i / steps),
                 y: fromY + (this._y - fromY) * (i / steps),
-                modifiers: this.keyboard._modifiers,
+                modifiers: this.keyboard['modifiers'],
             })
         }
     }
@@ -61,7 +61,7 @@ export class Touchscreen {
             button,
             x: this._x,
             y: this._y,
-            modifiers: this.keyboard._modifiers,
+            modifiers: this.keyboard['modifiers'],
             clickCount,
         })
     }
@@ -75,7 +75,7 @@ export class Touchscreen {
             button,
             x: this._x,
             y: this._y,
-            modifiers: this.keyboard._modifiers,
+            modifiers: this.keyboard['modifiers'],
             clickCount,
         })
     }

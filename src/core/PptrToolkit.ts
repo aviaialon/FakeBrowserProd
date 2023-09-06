@@ -72,7 +72,7 @@ export class PptrToolkit {
 
     static async stopLoading(page: Page) {
         try {
-            await page['_client'].send('Page.stopLoading')
+            await page['client'].send('Page.stopLoading')
         } catch (ex: any) {
         }
 
@@ -91,8 +91,8 @@ export class PptrToolkit {
         height: number,
     } | null> {
         try {
-            const {model} = await eh._client.send('DOM.getBoxModel', {
-                objectId: eh._remoteObject.objectId,
+            const {model} = await eh['client'].send('DOM.getBoxModel', {
+                objectId: eh.remoteObject().objectId,
             })
 
             if (!model) {
