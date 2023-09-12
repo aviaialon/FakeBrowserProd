@@ -334,9 +334,10 @@ export class FakeBrowser {
 
         const pages = await this.vanillaBrowser.pages()
         if (pages.length > 0) {
-            abandonedPageTargetIds.push(
-                ...pages.map(e => e.target()['_targetId']),
-            )
+            /*abandonedPageTargetIds.push(
+                ...pages.map(e => e.target()['targetId']),
+            )*/
+            pages.map(e => e.close())
         }
 
         const pagesFn = Object.getOwnPropertyDescriptor(Object.getPrototypeOf(this.vanillaBrowser), 'pages')!.value.bind(this.vanillaBrowser)
@@ -348,7 +349,7 @@ export class FakeBrowser {
                     // Maybe browser is created based on connect, with different instances
                     // so can only compare TargetId
                     pages = pages.filter(
-                        e => !abandonedPageTargetIds.includes(e.target()['_targetId']),
+                        e => !abandonedPageTargetIds.includes(e.target()['targetId']),
                     )
 
                     return pages
